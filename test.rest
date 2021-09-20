@@ -1,8 +1,6 @@
-POST  http://localhost:5000/api/posts
+POST  http://localhost:5000/api/categories
 Content-Type: application/json
 
 {
-	"title": "How the rat kill the hen",
-	"desc": "And the rat kill the hen because he thought he will be the next king of munballa kingdom but the tortoise kill the rat before he could climb the throne",
-	"username":"paul"
+	"name": "story book"
 }
