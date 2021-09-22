@@ -5,12 +5,12 @@ const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/users");
 const postsRoutes = require("./routes/posts");
 const categoriesRoutes = require("./routes/categories");
-const cors = require("cors");
 const multer = require("multer");
+const path = require("path");
 
-app.use(express.json());
 require("dotenv").config();
-// app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use("/images", express.static(path.join(__dirname, "/images")));
 
 const url = process.env.ATLAS_URL;
 

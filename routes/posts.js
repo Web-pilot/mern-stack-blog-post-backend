@@ -37,7 +37,7 @@ router.put("/:id", async (req, res) => {
 });
 
 //DELETE POST
-router.put("/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
     if (post.username === req.body.username) {
@@ -67,13 +67,12 @@ router.get("/:id", async (req, res) => {
 
 //GET ALL POSTS
 router.get("/", async (req, res) => {
-  const username = req.query;
-  const caty = req.query;
-
+   const username = req.query.user;
+   const caty = req.query.cat;
   try {
-    let posts;
+   let posts;
     if (username) {
-      posts = await Post.find({ username: username });
+      posts = await Post.find({ username});
     } else if (caty) {
       posts = await Post.find({
         categories: {

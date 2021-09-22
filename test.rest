@@ -1,6 +1,7 @@
-POST  http://localhost:5000/api/categories
+POST  http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
-	"name": "story book"
+   "username": "reality",
+   "password": "reality"
 }
