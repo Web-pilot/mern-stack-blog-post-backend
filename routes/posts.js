@@ -67,18 +67,24 @@ router.get("/:id", async (req, res) => {
 
 //GET ALL POSTS
 router.get("/", async (req, res) => {
-   const username = req.query.user;
-   const caty = req.query.cat;
+  const username = req.query.user;
+  const caty = req.query.cat;
+  const limited = req.query.s;
+
   try {
-   let posts;
+    let posts;
     if (username) {
-      posts = await Post.find({ username});
+      posts = await Post.find({ username });
     } else if (caty) {
       posts = await Post.find({
         categories: {
           $in: [caty],
         },
       });
+    } else if (limited) {
+      const allPost = await Post.find();
+      posts = allPost.slice(0, parseInt(req.query.s));
+      res.status(200).json(posts);
     } else {
       posts = await Post.find();
     }
@@ -88,4 +94,5 @@ router.get("/", async (req, res) => {
   }
 });
 
+//Get limited posts
 module.exports = router;
